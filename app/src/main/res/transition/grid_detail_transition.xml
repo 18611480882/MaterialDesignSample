@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- changeBounds is used for the TextViews which are shared -->
+    <changeBounds>
+        <targets>
+            <target android:targetId="@id/detail_title" />
+            <target android:targetId="@id/list_item_title" />
+        </targets>
+    </changeBounds>
+
+    <!-- moveImage is used for the ImageViews which are shared -->
+    <moveImage>
+        <targets>
+            <target android:targetId="@id/detail_photo" />
+            <target android:targetId="@id/list_item_photo" />
+        </targets>
+    </moveImage>
+
+</transitionSet>
+
+
