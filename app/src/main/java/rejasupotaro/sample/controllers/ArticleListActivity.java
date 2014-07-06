@@ -20,12 +20,15 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import rejasupotaro.sample.R;
 import rejasupotaro.sample.adapters.ArticleListAdapter;
+import rejasupotaro.sample.adapters.DrawerListAdapter;
 import rejasupotaro.sample.data.model.Article;
 import rejasupotaro.sample.listeners.OnRecyclerViewItemClickListener;
 
 public class ArticleListActivity extends Activity {
 
     private ArticleListAdapter adapter;
+
+    private ActionBarDrawerToggle drawerToggle;
 
     @InjectView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -49,16 +52,14 @@ public class ArticleListActivity extends Activity {
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
         String[] drawerItems = getResources().getStringArray(R.array.drawer_items);
-        drawerListView.setAdapter(new ArrayAdapter<String>(
+        drawerListView.setAdapter(new DrawerListAdapter(
                 this,
-                R.layout.list_item_drawer,
                 drawerItems
         ));
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
 
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
+        drawerToggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
                 R.drawable.ic_drawer,
@@ -97,6 +98,10 @@ public class ArticleListActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (drawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;

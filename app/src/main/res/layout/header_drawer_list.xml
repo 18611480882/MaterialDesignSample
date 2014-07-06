@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile_bg" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/gradient_light_shadow"
+        android:padding="@dimen/spacing_large">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.makeramen.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile_icon"
+                app:corner_radius="20dip"
+                app:mutate_background="true"
+                app:oval="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="rejasupotaro"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_gravity="center_vertical"
+                android:textAppearance="@android:style/TextAppearance.Material.Body1"
+                android:textColor="@color/almost_white" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>

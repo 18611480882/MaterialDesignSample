@@ -1,55 +1,61 @@
 package rejasupotaro.sample.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import rejasupotaro.sample.R;
-import rejasupotaro.sample.listeners.OnRecyclerViewItemClickListener;
 
-public class DrawerListAdapter extends RecyclerView.Adapter<DrawerListAdapter.ViewHolder> {
+public class DrawerListAdapter extends ArrayAdapter<String> {
 
-    private String[] items;
+    public static class ViewHolder {
 
-    private OnRecyclerViewItemClickListener<String> listener;
+        public final View root;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView textView;
 
         public ViewHolder(View view) {
-            super(view);
+            root = view;
             textView = (TextView) view.findViewById(R.id.text);
         }
     }
 
-    public DrawerListAdapter(String[] items, OnRecyclerViewItemClickListener listener) {
-        this.items = items;
-        this.listener = listener;
+    public DrawerListAdapter(Context context, String[] items) {
+        super(context, -1, items);
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.list_item_drawer, parent);
-        return new ViewHolder(view);
+    public final View getView(int i, View view, ViewGroup parent) {
+        if (i == 0) {
+            return onCreateHeaderView();
+        }
+
+        ViewHolder holder;
+        if (view == null) {
+            view = onCreateView(parent, i);
+            holder = new ViewHolder(view);
+            view.setTag(holder);
+        } else {
+            holder = (ViewHolder) view.getTag();
+        }
+        onBindView(holder, i);
+        return view;
     }
 
-    @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
-        final String item = items[position];
+    private View onCreateHeaderView() {
+        return View.inflate(getContext(), R.layout.header_drawer_list, null);
+    }
 
+    public View onCreateView(ViewGroup parent, int i) {
+        return View.inflate(parent.getContext(), R.layout.list_item_drawer, null);
+    }
+
+    public void onBindView(ViewHolder holder, final int i) {
+        final String item = getItem(i);
         holder.textView.setText(item);
-        holder.textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onItemClick(view, item);
-            }
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return items.length;
     }
 }
 
