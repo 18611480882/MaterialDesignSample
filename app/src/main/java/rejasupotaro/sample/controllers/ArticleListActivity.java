@@ -100,7 +100,6 @@ public class ArticleListActivity extends Activity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        // Pass any configuration change to the drawer toggls
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
