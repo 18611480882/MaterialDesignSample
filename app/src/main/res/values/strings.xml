@@ -2,14 +2,12 @@
 <resources>
 
     <string-array name="drawer_items">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+        <item>HEADER</item>
+        <item>{fa-home} Home</item>
+        <item>{fa-heart} Favorite</item>
+        <item>{fa-calendar} Whats new?</item>
+        <item>{fa-gear} Setting</item>
+        <item>{fa-share-alt} Love this app?</item>
     </string-array>
 
     <string name="drawer_open">Open navigation drawer</string>

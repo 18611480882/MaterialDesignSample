@@ -1,11 +1,10 @@
 package rejasupotaro.sample.adapters;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
+import android.widget.IconTextView;
 
 import rejasupotaro.sample.R;
 
@@ -15,11 +14,11 @@ public class DrawerListAdapter extends ArrayAdapter<String> {
 
         public final View root;
 
-        public final TextView textView;
+        public final IconTextView textView;
 
         public ViewHolder(View view) {
             root = view;
-            textView = (TextView) view.findViewById(R.id.text);
+            textView = (IconTextView) view.findViewById(R.id.text);
         }
     }
 

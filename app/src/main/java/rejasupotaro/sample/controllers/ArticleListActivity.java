@@ -58,6 +58,7 @@ public class ArticleListActivity extends Activity {
         ));
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setIcon(getDrawable(R.drawable.ic_drawer));
 
         drawerToggle = new ActionBarDrawerToggle(
                 this,
