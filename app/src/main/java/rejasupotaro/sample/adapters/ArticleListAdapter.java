@@ -39,11 +39,14 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
 
         View root;
 
-        @InjectView(R.id.list_item_title)
-        TextView titleTextView;
-
         @InjectView(R.id.list_item_photo)
         ImageView photoImageView;
+
+        @InjectView(R.id.mark_as_read)
+        View markAsReadButton;
+
+        @InjectView(R.id.list_item_title)
+        TextView titleTextView;
 
         public ViewHolder(View view) {
             super(view);
@@ -60,7 +63,7 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
     }
 
     public void onBindViewHolder(final ViewHolder holder, final int i) {
-        Article article = articleList.get(i);
+        final Article article = articleList.get(i);
 
         holder.photoImageView.setViewName("list_item:photo:" + article.getId());
         Picasso.with(holder.root.getContext())
@@ -77,6 +80,12 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
                     }
                 });
 
+        holder.markAsReadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                remove(article);
+            }
+        });
 
         holder.titleTextView.setViewName("list_item:title:" + article.getId());
         holder.titleTextView.setText(article.getTitle());
