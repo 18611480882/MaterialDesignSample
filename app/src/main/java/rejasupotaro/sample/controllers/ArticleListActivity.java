@@ -1,6 +1,7 @@
 package rejasupotaro.sample.controllers;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
@@ -58,12 +59,11 @@ public class ArticleListActivity extends Activity {
         ));
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setIcon(getDrawable(R.drawable.ic_drawer));
 
         drawerToggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
-                R.drawable.ic_drawer,
+                R.drawable.hamenu,
                 R.string.drawer_open,
                 R.string.drawer_close);
         drawerLayout.setDrawerListener(drawerToggle);
@@ -89,6 +89,19 @@ public class ArticleListActivity extends Activity {
     private void openDetailActivity(Article article, View view) {
         startActivity(ArticleDetailActivity.createIntent(this, article),
                 ArticleDetailActivity.createOption(this, view));
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        drawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggls
+        drawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
