@@ -7,12 +7,10 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.List;
@@ -24,6 +22,7 @@ import rejasupotaro.sample.adapters.ArticleListAdapter;
 import rejasupotaro.sample.adapters.DrawerListAdapter;
 import rejasupotaro.sample.data.model.Article;
 import rejasupotaro.sample.listeners.OnRecyclerViewItemClickListener;
+import com.antonioleiva.recyclerviewextensions.GridLayoutManager;
 
 public class ArticleListActivity extends Activity {
 
@@ -73,7 +72,7 @@ public class ArticleListActivity extends Activity {
         List<Article> articleList = Article.createDummyData();
         adapter = new ArticleListAdapter(articleList);
 
-        articleListView.setLayoutManager(new LinearLayoutManager(this));
+        articleListView.setLayoutManager(new GridLayoutManager(this));
         articleListView.setHasFixedSize(true);
         articleListView.setItemAnimator(new DefaultItemAnimator());
         articleListView.setAdapter(adapter);
