@@ -23,7 +23,7 @@
         android:layout_gravity="right"
         android:layout_margin="@dimen/spacing_large"
         android:text="{fa-bookmark}"
-        android:textAppearance="@android:style/TextAppearance.Material.Headline"
+        android:textAppearance="@android:style/TextAppearance.Material.Title"
         android:textColor="@color/accent" />
 
     <TextView
